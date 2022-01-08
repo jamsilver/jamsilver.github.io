@@ -12,7 +12,8 @@
    ========================================================================== */
 
 html {
-  color: #222;
+  color: #222222;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1em;
   line-height: 1.4;
 }
@@ -245,3 +246,55 @@ textarea {
   }
 }
 
+html {
+  height: 100%;
+}
+
+h1, h2 {
+  font-size: 1em;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  border-bottom: 2px solid grey;
+}
+
+header img {
+  margin-right: 1em;
+  width: 48px;
+  height: 48px;
+}
+
+main {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+main ul,
+main li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.5em 0;
+}
+
+footer {
+  border-top: 2px solid grey;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+footer p {
+  margin: 0;
+}
