@@ -14,7 +14,7 @@
 html {
   color: #222222;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 1.4;
 }
 
@@ -84,6 +84,209 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+/* 6eb5dd */
+/* 0783c8 */
+
+html {
+  height: 100%;
+}
+
+h1, h2, h3 {
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+
+img, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+body > header {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 0.5em;
+}
+
+header .avatar img {
+  width: 100px;
+  height: auto;
+}
+
+html[data-scroll] body > header {
+  flex-flow: row nowrap;
+  gap: 1em;
+  padding-left: calc(2em - 3px - 18px);
+  padding-bottom: 0;
+}
+html[data-scroll] body > header .avatar img {
+  width: 48px;
+}
+
+main {
+  text-align: center;
+  overflow-y: auto;
+  padding: 2em;
+  max-width: 100%;
+  position: relative;
+}
+
+main ul,
+main li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.5em 0;
+}
+
+article {
+  border-left: 6px solid #0783c8;
+  padding: 2em 2em 0 2em;
+  position: relative;
+}
+
+article::after {
+  content: "";
+  height: 200px;
+  display: block;
+  border-left: 6px dashed white;
+  position: relative;
+  left: calc(-2em - 6px);
+  margin-top: 3em;
+}
+
+article header {
+  background: #ceecff;
+  margin-left: 2em;
+  margin-bottom: 2em;
+  padding: 0.5em;
+}
+article header::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: #0783c8;
+  border-radius: 50%;
+  position: absolute;
+  left: -18px;
+  margin-top: -35px;
+}
+article header::after {
+  content: "";
+  position: absolute;
+  left: 2em;
+  top: 2em;
+  width: 2em;
+  height: 2em;
+  background: #ceecff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+article header p {
+  text-align: left;
+  margin: 0;
+}
+article header .time-anchor {
+  position: absolute;
+  top: 1.5em;
+  left: 3em;
+  font-size: small;
+  font-weight: bold;
+  color: #0783c8;
+}
+
+article .post-content {
+  margin-left: 2em;
+}
+
+footer {
+  border-top: 2px solid grey;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+footer nav {
+  width: 100%;
+  height: 100%;
+  font-size: small;
+}
+
+nav > ul {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  gap: 1em;
+}
+
+nav > ul > li {
+  flex-grow: 1;
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  display: block;
+}
+
+nav > ul > li > a {
+  display: block;
+  padding: 1em 0;
+  border-radius: 50px;
+}
+
+nav > ul > li > a,
+nav > ul > li > a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+nav > ul > li > a:hover,
+nav > ul > li > a:focus {
+  background: #e4e4e4;
+}
+
+nav > ul > li > a[aria-current] {
+  color: black;
+  font-weight: bold;
+}
+nav > ul > li > a::before {
+  display: block;
+  font-size: large;
+  font-weight: normal;
+  filter: brightness(0.9) grayscale(100%);
+}
+nav > ul > li > a[aria-current][aria-current]::before {
+  filter: brightness(0);
+}
+
+nav > ul > li > a.home::before {
+  content: "🏠";
+}
+
+nav > ul > li > a.projects::before {
+  content: "🧭";
+}
+
+nav > ul > li > a.message::before {
+  content: "📥";
+}
+nav > ul > li > a.profile::before {
+  content: "👤";
+  filter: brightness(1.8) grayscale(100%);
+}
+
+a[disabled] {
+  pointer-events: none;
+}
 
 /* ==========================================================================
    Helper classes
@@ -160,6 +363,55 @@ textarea {
 
 .clearfix::after {
   clear: both;
+}
+
+/* Scrollbox.
+ *
+ * Add shadows to imply content is scrollable without using scroll-bars.
+ */
+.scrollbox {
+  background: /* Shadow covers */
+  linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
+  radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background: /* Shadow covers */
+  linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
+  radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.scrollbox {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.scrollbox::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+/*
+ * Wrap youtube embeds in this to stop them busting the max-width.
+ */
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+}
+.embed-container embed,
+.embed-container iframe,
+.embed-container object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* ==========================================================================
@@ -244,57 +496,4 @@ textarea {
   h3 {
     page-break-after: avoid;
   }
-}
-
-html {
-  height: 100%;
-}
-
-h1, h2 {
-  font-size: 1em;
-}
-
-body {
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  padding: 0.5em;
-  border-bottom: 2px solid grey;
-}
-
-header img {
-  margin-right: 1em;
-  width: 48px;
-  height: 48px;
-}
-
-main {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-main ul,
-main li {
-  list-style-type: none;
-  padding: 0;
-  margin: 0.5em 0;
-}
-
-footer {
-  border-top: 2px solid grey;
-  padding: 0.5em;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-}
-footer p {
-  margin: 0;
 }
