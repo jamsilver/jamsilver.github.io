@@ -406,6 +406,7 @@ article.secondary header a.anchor {
 }
 
 footer {
+  order: 1;
   border-top: 2px solid grey;
   display: flex;
   flex-flow: column nowrap;
