@@ -74,4 +74,104 @@
         }
     });
 
+    /**
+     * Read more links.
+     */
+    var readmores = document.getElementsByClassName("js-read-more");
+    var i;
+    for (i = 0; i < readmores.length; i++) {
+        var readmore = readmores[i];
+        if (!readmore.dataset['js_read_more']) {
+            readmore.dataset['js_read_more'] = true;
+            (function(readmore) {
+                readmore.classList.add("read-more-hide");
+                var link = document.createElement('a');
+                link.classList.add("read-more");
+                var span = document.createElement("span");
+                span.appendChild(document.createTextNode("show more"));
+                link.appendChild(span);
+                readmore.appendChild(link);
+                link.addEventListener("click", function(event) {
+                    readmore.classList.toggle("read-more-hide");
+                    readmore.classList.toggle("read-more-show");
+                    if (readmore.classList.contains("read-more-hide")) {
+                        span.textContent = "show more";
+                        readmore.closest("article").scrollIntoView();
+                    }
+                    else {
+                        span.textContent = "show less";
+                    }
+                });
+            })(readmore);
+        }
+    }
+
+    // Need exactly one popup overlay div on the page.
+    if (document.getElementsByClassName("popup-overlap").length === 0) {
+        var overlay = document.createElement("div");
+        overlay.classList.add("popup-overlay");
+        document.body.prepend(overlay);
+    }
+
+    /**
+     * Class representing a popup element.
+     */
+    var Popup = function(element) {
+        this.hidden = true;
+        this.element = element;
+        this.header = this.element.getElementsByTagName("header")[0];
+        // Initialize.
+        this.element.classList.add("popup-hide");
+        var close_link = document.createElement("a");
+        close_link.classList.add("popup-close-link");
+        close_link.text = "Close";
+        this.header.appendChild(close_link);
+        var that = this;
+        this.header.addEventListener("click", function(event) {
+            that.toggle();
+        });
+        overlay.addEventListener("click", function(event) {
+            that.hide();
+        });
+        document.addEventListener("keyup", function(event) {
+            if (event.keyCode == 27) {
+                that.hide();
+            }
+        });
+     };
+     Popup.prototype.toggle = function() {
+         if (this.hidden) {
+             this.show();
+         }
+         else {
+            this.hide();
+         }
+     };
+     Popup.prototype.show = function() {
+         this.hidden = false;
+         this.element.classList.remove("popup-hide");
+         this.element.classList.add("popup-show");
+         this.element.getElementsByClassName("post-content")[0].classList.add("scrollbox");
+         document.body.classList.add("popup-open");
+     };
+     Popup.prototype.hide = function() {
+         this.hidden = true;
+         this.element.classList.remove("popup-show");
+         this.element.classList.add("popup-hide");
+         this.element.getElementsByClassName("post-content")[0].classList.remove("scrollbox");
+         document.body.classList.remove("popup-open");
+     };
+
+     /**
+      * Popup content.
+      */
+      var popups = document.getElementsByClassName("js-popup");
+      var i;
+      for (i = 0; i < popups.length; i++) {
+          var popup = popups[i];
+          if (!popup.dataset['js_popup']) {
+            popup.dataset['js_popup'] = true;
+            new Popup(popup);
+          }
+      }
 })();
