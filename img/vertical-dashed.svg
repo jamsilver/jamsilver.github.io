@@ -1,1 +1,3 @@
-<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='none' stroke='white' stroke-width='10%' stroke-dasharray='20' stroke-dashoffset='0' stroke-linecap='butt' /></svg>
+<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'>
+  <line x1='50%' y1='0' x2='50%' y2='100' stroke-dasharray='10' style='stroke:white;stroke-width:100%;' />
+</svg>
